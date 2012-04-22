@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.diegogusava</groupId>
-	<artifactId>mvc-spring-jpa</artifactId>
+	<artifactId>spring-mvc-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<description>Spring MVC 3.1, Spring Data, Hibernate 4 and Mysql</description>
@@ -149,8 +149,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
