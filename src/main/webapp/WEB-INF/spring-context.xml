@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/jdbc 
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+	http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<!-- Configures the annotation-driven Spring MVC Controller programming model. -->
+	<mvc:annotation-driven />
+
+	<!-- Scans the classpath for annotated components that will be auto-registered as Spring beans. By 
+	 default, the Spring-provided @Component, @Repository, @Service, and @Controller stereotypes will 
+	 be detected. -->
+	<context:component-scan base-package="br.com.diegogusava.sgs" />
+
+	<!-- Configures a handler for serving static resources such as images, js, and, css files with cache headers 
+ 	optimized for efficient loading in a web browser.  -->
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- Imports datasource configuration -->
+	<import resource="spring-data.xml"/>
+	
+	<!--  Can be used to populate any bean property of type Properties via a bean reference.  -->
+	<bean id="deployProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="/WEB-INF/database.properties"></property>
+	</bean>
+</beans>
